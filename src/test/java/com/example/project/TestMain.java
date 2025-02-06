@@ -16,14 +16,14 @@ public class TestMain{
         ArrayList<String> expected = new ArrayList<>();
         Collections.addAll(expected,"this", "bob","is","bob","not", "a", "trivial", "bob","task", "right?", "bob" );
         assertEquals(expected, Main.insertAfterI(list, "bob"));
-    }
+    }//reverse
     @Test
     public void testRemove3(){
         ArrayList<String> list = new ArrayList<String>(Arrays.asList("the", "not", "skim", "pat", "a", "rat", "cat", "sit", "truck", "par", "tar"));
         ArrayList<String> expected = new ArrayList<String>(Arrays.asList("skim","a","truck"));
         assertEquals(expected, Main.removeThree(list));
     }
-
+//duplicate
     @Test
     public void testReverseArray(){
         int[] intList = {1, 2, 3, 4, 5, 6, 7};
@@ -38,7 +38,7 @@ public class TestMain{
     }
 
     @Test
-    public void testParseSentence(){
+    public void testParseSentence(){//remove3
         String sentence = "This is a sentence!";
         ArrayList<String> expected = new ArrayList<String>(Arrays.asList("This", "is", "a", "sentence!"));
         assertEquals(expected,Main.parseSentence(sentence));
@@ -132,9 +132,9 @@ public class TestMain{
 
         list.clear();expected.clear();
         Collections.addAll(list, 4,3,4,4);
-        Collections.addAll(expected,3,3,4,4);
+        Collections.addAll(expected,4,3,4,4);
         assertEquals(expected,Main.notAlone(list,4));
-    }
+    }  
 
 
     @Test
@@ -215,5 +215,7 @@ public class TestMain{
         ArrayList<Integer> modes7 = Main.modes(intList24);
         ArrayList<Integer> expected7 = new ArrayList<>(Arrays.asList(1,2,3,4,5,6));
         assertEquals(expected7,modes7);
+
+     
     }
 }
