@@ -432,7 +432,42 @@ tate (modify) elements in numList
    */
   public static ArrayList<Integer> modes(int[] numList)
   {
-      HashMap<Integer, Integer> map = new HashMap<>();
+//11,22,333,
+    ArrayList<Integer> modes = new ArrayList<>();
+
+
+    Arrays.sort(numList); 
+    int max = 0;
+    boolean allSame = true;
+
+    for (int i = 0; i < numList.length; ) {
+        int current = numList[i];
+        int count = 0;
+
+        while (i < numList.length && numList[i] == current) {
+            count++;
+            i++;
+        }
+        if (count > max) {
+            max = count;
+            modes.clear();
+            modes.add(current);
+        } else if (count == max) 
+        {
+            modes.add(current);
+        }
+        if (max != count) {
+            allSame = false;
+        }
+    }
+
+   
+    if (allSame) {
+        modes.clear();
+    }
+
+    return modes;
+    /*  HashMap<Integer, Integer> map = new HashMap<>();
       ArrayList<Integer> answer = new ArrayList<>();
       int max = 0;
   
@@ -462,6 +497,21 @@ tate (modify) elements in numList
           }
       }
   
-      return (answer.size() == map.size()) ? new ArrayList<>() : answer;
+      return (answer.size() == map.size()) ? new ArrayList<>() : answer;*/
+     
   }
+
+  public static void main(String[] args) {
+    int[] numList1 = {1, 2, 3, 2, 4, 5, 5, 6};
+    System.out.println(modes(numList1)); // Output: [2, 5]
+
+    int[] numList2 = {1, 2, 2, 3, 4, 4, 4};
+    System.out.println(modes(numList2)); // Output: [4]
+
+    int[] numList3 = {1, 2, 3, 4};
+    System.out.println(modes(numList3)); // Output: []
+
+    int[] numList4 = {1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 1, 2, 3, 4, 5, 6};
+    System.out.println(modes(numList4)); // Output: []
+}
 }
